@@ -13,7 +13,7 @@ The unsmoothed maximum likelihood estimate of the unigram probability can be com
 
 ```
 P(w<sub>x</sub>) = c(w<sub>x</sub>)/sum<sub>i</sub>{c(w<sub>i</sub>)}
-      = c(w<sub>x</sub>)/N
+                 = c(w<sub>x</sub>)/N
 ```
 
 Let there be an adjusted count c<sup>*</sup>.</br>
@@ -22,10 +22,12 @@ where where V is the total number of word types in the language.</br>
 Now, probabilities can be calculated by normalizing counts by N.</br>
 p<sub>i</sub><sup>*</sup> = (c <sub>i</sub>+1)/(N+V)
 
+
 ### Application on bigrams
 
 Normal bigram probabilities are computed by normalizing each row of counts by the unigram count:</br>
 P(w<sub>n</sub>|w<sub>n-1</sub>) = C(w<sub>n-1</sub>w<sub>n</sub>)/C(w<sub>n-1<sub>)
 
-For add-one smoothed bigram counts we need to augment the unigram count by the number of total word types in the vocabulary V:
+
+For add-one smoothed bigram counts we need to augment the unigram count by the number of total word types in the vocabulary V:</br>
 p<sup>*</sup>(w<sub>n</sub>|w<sub>n-1</sub>) = ( C(w<sub>n-1</sub>w<sub>n</sub>)+1 )/( C(w<sub>n-1</sub>)+V ) 
