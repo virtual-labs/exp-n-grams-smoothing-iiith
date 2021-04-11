@@ -1,6 +1,6 @@
 **Q1**. Add-one smoothing works horribly in practice because of giving too much probability mass to unseen n-grams. Prove using an example.
 
-**Q2**. In Add-&#948; smoothing, we add a small value '&#948;' to the counts instead of one. Apply Add-&#948; smoothing to the below bigram count table where &#948;=0.02.
+**Q2**. In Add-&delta; smoothing, we add a small value '&delta;' to the counts instead of one. Apply Add-&delta; smoothing to the below bigram count table where &delta;=0.02.
 
 |   |(eos)|John|Read|Fountainhead|Mary|a|Different|Book|She|By|Dickens|
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -22,4 +22,4 @@ N = 5100 V = 11
 Q3. Given S = Dickens read a book, find P(S)</br>
 **(a)** Using unsmoothed probability</br>
 **(b)** Applying Add-One smoothing.</br>
-**(c)** Applying Add-&#948; smoothing</br>
+**(c)** Applying Add-&delta; smoothing</br>
