@@ -16,16 +16,16 @@ P(w<sub>x</sub>) = c(w<sub>x</sub>)/sum<sub>i</sub>{c(w<sub>i</sub>)}
       = c(w<sub>x</sub>)/N
 ```
 
-Let there be an adjusted count c*.
-c<sub>i</sub><sup>*</sup> = (c < sub="">+1)*N/(N+V)
-where where V is the total number of word types in the language.
-Now, probabilities can be calculated by normalizing counts by N.
-p i* = (c < sub="">+1)/(N+V)
+Let there be an adjusted count c<sup>*</sup>.</br>
+c<sub>i</sub><sup>*</sup> = (c <sub>i</sub>+1 * N/(N+V))</br>
+where where V is the total number of word types in the language.</br>
+Now, probabilities can be calculated by normalizing counts by N.</br>
+p<sub>i</sub><sup>*</sup> = (c <sub>i</sub>+1)/(N+V)
 
 ### Application on bigrams
 
-Normal bigram probabilities are computed by normalizing each row of counts by the unigram count:
-P(w n|wn-1) = C(wn-1wn)/C(wn-1)
+Normal bigram probabilities are computed by normalizing each row of counts by the unigram count:</br>
+P(w<sub>n</sub>|w<sub>n-1</sub>) = C(w<sub>n-1</sub>w<sub>n</sub>)/C(w<sub>n-1<sub>)
 
 For add-one smoothed bigram counts we need to augment the unigram count by the number of total word types in the vocabulary V:
-p *(wn|wn-1) = ( C(wn-1wn)+1 )/( C(wn-1)+V ) 
+p<sup>*</sup>(w<sub>n</sub>|w<sub>n-1</sub>) = ( C(w<sub>n-1</sub>w<sub>n</sub>)+1 )/( C(w<sub>n-1</sub>)+V ) 
