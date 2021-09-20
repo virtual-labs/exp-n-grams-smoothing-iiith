@@ -4,6 +4,3 @@ There are some techniques that can be used for assigning a non-zero probabilty t
 
 <img src="images/a.jpg">
 
-### Objective
-
-The objective of this experiment is to learn how to apply add-one smoothing on sparse bigram table.
