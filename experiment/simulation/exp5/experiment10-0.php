@@ -1,7 +1,5 @@
 <html>
 <head>
-<script class='gtm'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W59SWTR');</script>
-
 <script type="text/javascript" src='jquery.js'></script>
 <script type="text/javascript">
 
@@ -60,7 +58,7 @@ $size=count($o);
 ?>
 <br/> <br/>
 <p style="font-size:130%">Bigram counts for the corpus:</p><br/>
-<table cellspacing="2" cellpadding="8" border="1" style="text-align:center;">
+<table cellspacing="-2" cellpadding="4" border="1" style="text-align:center;">
 <tr><th></th>
 <?php 
 for($i=0;$i<$size;$i++)
@@ -80,7 +78,7 @@ for($k=0;$k<$size;$k++)
 echo "</table><br/>";
 echo "<p style=\"font-size:130%\">N = ".$in[0]."   V = ".$in[1]."</p><br/><br/>";
 echo "<p style=\"font-size:130%\">Fill the bigram probabilities after add-one smoothing: (Upto 4 decimal places)</p><br/>";
-echo "<table cellspacing=\"2\" cellpadding=\"8\" border=\"1\" style=\"text-align:center;\"><br/>";
+echo "<table cellspacing=\"-2\" cellpadding=\"4\" border=\"1\" style=\"text-align:center;\"><br/>";
 echo "<tr><th></th>";
 for($i=0;$i<$size;$i++)
          echo "<th>".$o[$i]."</th>";
