@@ -11,10 +11,10 @@ In Add-One smooting, we add one to all the bigram counts before normalizing them
 
 The unsmoothed maximum likelihood estimate of the unigram probability can be computed by dividing the count of the word by the total number of word tokens N.
 
-```
+
 P(w<sub>x</sub>) = c(w<sub>x</sub>)/sum<sub>i</sub>{c(w<sub>i</sub>)}
                  = c(w<sub>x</sub>)/N
-```
+
 
 Let there be an adjusted count c<sup>*</sup>.</br>
 c<sub>i</sub><sup>*</sup> = (c <sub>i</sub>+1 * N/(N+V))</br>
