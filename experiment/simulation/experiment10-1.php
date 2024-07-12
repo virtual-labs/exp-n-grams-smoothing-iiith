@@ -8,8 +8,8 @@
 </head>
 <body><div id='answer'>
 <?php
-$smoothed=explode(",",$_GET['smoothed']);
-$order=explode(",",$_GET['order']);
+$smoothed=explode(",",(string) $_GET['smoothed']);
+$order=explode(",",(string) $_GET['order']);
 $size=count($order);
 $file=$_GET['file'];
 echo "<p style=\"text-align:center;\"> <h1>Bigram probability Table after add-one: </h1></p><br/><br/>";
