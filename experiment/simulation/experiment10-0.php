@@ -39,6 +39,26 @@ else
 
 }
 </script>
+<script>
+        $(document).ready(function(){
+            $("#showAns a").click(function(event){
+                event.preventDefault(); 
+                var href = $(this).attr('href');
+                
+                $.ajax({
+                    url: href,
+                    type: 'GET',
+                    success: function(data) {
+                        
+                        $("#answerContainer").html(data);
+                    },
+                    error: function() {
+                        $("#answerContainer").html("<p>Error loading content.</p>");
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <?php
@@ -46,17 +66,27 @@ else
 $f=$_GET['fileno'];
 $file=$f.'.txt';
 $full_path='Exp10/'.$file;
-$f1 =  fopen($full_path, "r");
-$buffer=fread($f1, filesize($full_path));
-$parts=split("&", $buffer); 
-$counts=$parts[0];      
-$smoothed=$parts[1];
-$order=$parts[2];
-$info=$parts[3];
-$c=explode(",", $counts); 
-$o=explode(",", $order);
-$in=explode(",", $info);
-$size=count($o);
+
+$smoothed = '';
+$order = '';
+$c = [];
+$o = [];
+$in = [];
+$size = 0;
+
+if (file_exists($full_path)) {
+   $f1 =  fopen($full_path, "r");
+   $buffer=fread($f1, filesize($full_path));
+   $parts=preg_split('#&#m', $buffer); 
+   $counts=$parts[0];      
+   $smoothed=$parts[1];
+   $order=$parts[2];
+   $info=$parts[3];
+   $c=explode(",", (string) $counts); 
+   $o=explode(",", (string) $order);
+   $in=explode(",", (string) $info);
+   $size=count($o);
+}
 ?>
 <br/> <br/>
 <p style="font-size:130%">Bigram counts for the corpus:</p><br/>
@@ -99,7 +129,7 @@ for($k=0;$k<$size;$k++)
 echo "</table><br/><br/>";
 echo "<br/><button onclick=\"checkCondition('".$smoothed."', '".$i."', '".$file."');\"> Submit</button><br/><br/>";
 echo "<div id=\"result\"></div><br/>";
-echo"<div id=\"showAns\"><a href=\"experiment10-1.php?smoothed=".$smoothed."&order=".$order."&file=".$file."\" target=\"_blank\">Show Answer</a></div>";
+echo"<div id=\"showAns\"><a href=\"experiment10-1.php?smoothed=".$smoothed."&order=".$order."&file=".$file."\" target=\"_blank\">Show Answer</a></div><div id=\"answerContainer\" style=\"flex:1\"></div>";
 
 echo "</div>";
 ?>

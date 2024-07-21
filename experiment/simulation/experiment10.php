@@ -28,7 +28,7 @@ $dir_path = './Exp10/';
 $d = dir($dir_path) or die("Wrong path: $dir_path");
 $files = glob($dir_path . "*.txt");?>
 
-<form name = "selector" action="javascript:selectCorpus()" target="_parent" method="post">
+<form name = "selector" action="javascript:selectCorpus()" target="_self" method="post">
 <select name="corp_opt" id="corp_opt" autocomplete="off" onchange="selectCorpus(this.value);">";
      <option value="-1" select="selected">---Select a corpus---</option>";
 
