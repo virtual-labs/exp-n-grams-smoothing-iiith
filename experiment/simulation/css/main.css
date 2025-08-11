@@ -50,13 +50,13 @@ body {
   font-size: 1.12em;
 }
 
-/* Instructions Panel */
+/* Instructions Panel - Remove bottom curves like word analysis */
 .instructions-panel {
   width: 100%;
   margin: 0 auto 1.5rem auto;
-  background: linear-gradient(90deg, #6ef2e6 0%, #4895ef 100%);
-  border-radius: 1.2rem;
-  box-shadow: var(--shadow-md);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   padding: 0;
   border: none;
 }
@@ -68,14 +68,15 @@ body {
   font-size: 1.55rem;
   font-weight: 700;
   color: #22223b;
-  background: transparent;
+  background: linear-gradient(90deg, #6ef2e6 0%, #4895ef 100%);
   margin: 0;
   padding: 1.1rem 0;
   cursor: pointer;
   user-select: none;
-  border-radius: 1.2rem 1.2rem 0 0;
+  border-radius: 1.2rem 1.2rem 0 0; /* Only top curves */
   transition: background 0.2s;
   letter-spacing: 0.01em;
+  box-shadow: var(--shadow-md);
 }
 
 .instructions-header .arrow-icon {
@@ -88,11 +89,12 @@ body {
 .instructions-content {
   background: #fff;
   color: #22223b;
-  border-radius: 0 0 1.2rem 1.2rem;
+  border-radius: 0; /* No curves at bottom */
   padding: 1.2rem 2rem 1.2rem 2rem;
   font-size: 1.18em;
   margin: 0;
   border-top: 1px solid var(--color-neutral-200);
+  box-shadow: var(--shadow-md);
 }
 
 .instructions-list {
@@ -105,42 +107,51 @@ body {
   margin-bottom: 0.7em;
 }
 
-/* Two-Pane Layout */
+/* Two-Pane Layout - Fixed proportions and containment */
 #main-2pane-container {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1.5rem;
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
+  overflow: hidden; /* Prevent content from spilling out */
 }
 
+/* Left pane - exactly 25% width */
 #left-pane {
-  flex: 0 0 40%;
-  min-width: 240px;
-  max-width: 40%;
+  flex: 0 0 25% !important; /* Fixed 25% width, no grow/shrink */
+  width: 25% !important;
+  max-width: 25% !important;
+  min-width: 280px; /* Minimum for usability */
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   box-sizing: border-box;
   font-size: 1.15em;
+  overflow: hidden; /* Prevent overflow */
 }
 
+/* Right pane - takes remaining 75% width */
 #right-pane {
-  flex: 1 1 60%;
-  max-width: 60%;
+  flex: 1 !important; /* Takes all remaining space (75%) */
+  width: 75% !important;
+  max-width: 75% !important;
+  min-width: 0; /* Allow shrinking if needed */
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   box-sizing: border-box;
   font-size: 1.15em;
+  overflow-x: auto; /* Allow horizontal scroll for large tables */
+  overflow-y: visible;
 }
 
-/* Dropdown */
+/* Dropdown - shorter width in left pane */
 select {
-  width: 100%;
-  max-width: 320px;
+  width: 85% !important; /* Reduced from 100% to 85% */
+  max-width: 250px !important; /* Reduced from 320px to 250px */
   padding: 0.9rem 1.3rem;
   border: 2px solid var(--color-primary);
   border-radius: 0.7rem;
@@ -166,6 +177,8 @@ select:focus {
   flex-direction: column;
   align-items: flex-start;
   font-size: 1.13em;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .corpus-sentence {
@@ -174,6 +187,8 @@ select:focus {
   color: #3a0ca3;
   font-size: 1.18em;
   font-weight: 500;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Buttons */
@@ -230,9 +245,10 @@ button:hover:not(:disabled) {
   margin: 0 auto;
 }
 
-/* Table Styling */
+/* Table Styling - proper containment */
 .transition-matrix-table {
   width: 100%;
+  max-width: 100%; /* Ensure table doesn't exceed container */
   border-collapse: collapse;
   margin: 1.5rem 0;
   background: #fff;
@@ -240,6 +256,16 @@ button:hover:not(:disabled) {
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-neutral-200);
+  table-layout: auto; /* Allow flexible column sizing */
+  box-sizing: border-box;
+}
+
+/* Table container to handle overflow */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  box-sizing: border-box;
 }
 
 .transition-matrix-table th,
@@ -248,6 +274,8 @@ button:hover:not(:disabled) {
   padding: 0.85em 0.7em;
   text-align: center;
   font-size: 1.08em;
+  box-sizing: border-box;
+  min-width: 60px; /* Minimum column width */
 }
 
 .transition-matrix-table th {
@@ -306,6 +334,8 @@ button:hover:not(:disabled) {
 
 #sentence-probability-container {
   margin-top: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .sentence-prob-input-row {
@@ -314,6 +344,7 @@ button:hover:not(:disabled) {
   justify-content: center;
   gap: 1.2rem;
   margin-top: 0.7em;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .sentence-prob-quiz {
@@ -322,6 +353,8 @@ button:hover:not(:disabled) {
   padding: 1.2rem 2rem;
   border: 1px solid var(--color-neutral-200);
   margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .sentence-prob-quiz > div:first-child,
@@ -335,8 +368,10 @@ button:hover:not(:disabled) {
 
 .sentence-prob-table {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
+  box-sizing: border-box;
 }
 
 .sentence-prob-table th,
@@ -345,6 +380,7 @@ button:hover:not(:disabled) {
   padding: 0.7em 1em;
   text-align: center;
   font-size: 1.08em;
+  box-sizing: border-box;
 }
 
 .sentence-prob-table th {
@@ -376,19 +412,68 @@ button:hover:not(:disabled) {
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  #main-2pane-container {
+    gap: 1rem; /* Reduce gap on smaller screens */
+  }
+
+  #left-pane {
+    min-width: 250px; /* Slightly smaller minimum width */
+  }
+}
+
 @media (max-width: 900px) {
   .main-content {
     width: 98vw;
     padding: 1rem 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all content horizontally */
   }
+
   #main-2pane-container {
     flex-direction: column;
     gap: 1.5rem;
-  }
-  #left-pane,
-  #right-pane {
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Center child elements horizontally */
+  }
+
+  /* Left pane becomes centered and appears first */
+  #left-pane {
+    flex: none !important;
+    max-width: 90% !important;
+    width: 90% !important;
+    min-width: 0 !important;
+    margin: 0 auto 1rem auto; /* Center horizontally with bottom margin */
+    order: 1; /* First in mobile */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content within the pane */
+  }
+
+  /* Right pane appears below left pane and centered */
+  #right-pane {
+    flex: none !important;
+    max-width: 90% !important;
+    width: 90% !important;
+    min-width: 0 !important;
+    margin: 0 auto; /* Center horizontally */
+    order: 2; /* Second in mobile */
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content within the pane */
+  }
+
+  select {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
 
@@ -396,12 +481,15 @@ button:hover:not(:disabled) {
   .main-content {
     padding: 0.5rem 0.2rem;
   }
+
   .instructions-panel {
     padding: 0.7rem 0.5rem;
   }
+
   .sentence-prob-quiz {
     padding: 0.7rem 0.5rem;
   }
+
   .transition-matrix-table th,
   .transition-matrix-table td,
   .sentence-prob-table th,
@@ -409,10 +497,112 @@ button:hover:not(:disabled) {
     padding: 0.3em 0.2em;
     font-size: 0.95em;
   }
+
   .sim-button,
   button {
     font-size: 1rem;
     padding: 0.7rem 1.2rem;
     min-width: 100px;
+  }
+
+  .sentence-prob-input-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  #sentenceProbInput {
+    width: 120px;
+    margin-right: 0;
+  }
+
+  /* Additional mobile centering for very small screens */
+  #left-pane,
+  #right-pane {
+    max-width: 95% !important;
+    width: 95% !important;
+  }
+}
+
+/* Ensure all content is properly contained */
+* {
+  box-sizing: border-box;
+}
+
+/* Additional table overflow handling */
+#right-pane table {
+  table-layout: auto;
+  word-wrap: break-word;
+}
+
+/* Ensure proper sizing for large tables like Corpus C */
+@media (min-width: 901px) {
+  .transition-matrix-table {
+    font-size: 0.95em; /* Slightly smaller font to fit more content */
+  }
+
+  .transition-matrix-table th,
+  .transition-matrix-table td {
+    padding: 0.7em 0.5em; /* Slightly tighter padding */
+  }
+
+  .transition-matrix-table input.ngram-input {
+    max-width: 70px; /* Slightly smaller input fields */
+    padding: 0.4em 0.5em;
+  }
+}
+
+/* Landscape orientation alert styles */
+.landscape-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 2rem;
+  text-align: center;
+}
+
+.landscape-alert h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary-light);
+}
+
+.landscape-alert p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.landscape-alert .rotate-icon {
+  font-size: 3rem;
+  margin: 1rem 0;
+  animation: rotate 2s infinite;
+  color: var(--color-secondary);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  75% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
