@@ -194,10 +194,10 @@ class CorpusManager {
       <div>Calculate the probability of the sentence: <b>${quiz.sentence}</b></div>
       <table class="sentence-prob-table"><tr><th>Bigram</th><th>Probability</th></tr>`;
     quiz.bigrams.forEach((bp) => {
-      html += `<tr><td>${bp.pair}</td><td>${bp.prob}</td></tr>`;
+      // Format the bigram pair for better readability
+      const formattedPair = bp.pair.replace("|", " | ");
+      html += `<tr><td>${formattedPair}</td><td>${bp.prob}</td></tr>`;
     });
-    //<input type="text" id="sentenceProbInput" style="width:100px;" />
-    //<button id="checkSentenceProb" class="sim-button btn-primary" style="margin-left:10px;">Check</button>
     html += `</table>
               <div>Enter the product of all probabilities above:</div>
               <div class="sentence-prob-input-row">
