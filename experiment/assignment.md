@@ -20,7 +20,3 @@
 - Calculate \( P(\text{booked} | I) \), \( P(\text{took} | I) \), and \( P(\text{flight} | a) \) using Add-One Smoothing (assume vocabulary size \( V = 6 \)).
 
 **5.** Describe a real-world NLP application where N-gram smoothing would be essential. Explain how zero probabilities could affect the application and how smoothing resolves this.
-
----
-
-**Submit your answers as a PDF or text document. Include screenshots from the simulation where appropriate.**

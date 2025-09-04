@@ -43,13 +43,13 @@ class MobileDetection {
       this.isMobile = true;
     }
 
-    console.log("Device Detection:", {
+    /* console.log("Device Detection:", {
       isMobile: this.isMobile,
       isTablet: this.isTablet,
       screenWidth: screenWidth,
       screenHeight: screenHeight,
       userAgent: userAgent,
-    });
+    }); */
   }
 
   checkOrientation() {
