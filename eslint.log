@@ -1,0 +1,11 @@
+
+/home/runner/work/exp-n-grams-smoothing-iiith/exp-n-grams-smoothing-iiith/experiment/simulation/js/main.js
+  106:15  warning  'val' is assigned a value but never used  no-unused-vars
+
+/home/runner/work/exp-n-grams-smoothing-iiith/exp-n-grams-smoothing-iiith/experiment/simulation/js/mobile-detection.js
+   25:11  warning  'screenHeight' is assigned a value but never used  no-unused-vars
+  250:38  warning  'module' is not defined                            no-undef
+  251:3   warning  'module' is not defined                            no-undef
+
+✖ 4 problems (0 errors, 4 warnings)
+
